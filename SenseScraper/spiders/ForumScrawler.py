@@ -14,6 +14,11 @@ class ForumcrawlerSpider(scrapy.Spider):
 
     runCount = 0
 
+    def __init__(self, category='', domain=None, *args, **kwargs):
+        super(ForumcrawlerSpider, self).__init__(*args, **kwargs)
+        self.start_urls = ['http://www.example.com/categories/%s' % category]
+        self.domain = domain
+
     def parse(self, response):
 
         ForumcrawlerSpider.runCount += 1
